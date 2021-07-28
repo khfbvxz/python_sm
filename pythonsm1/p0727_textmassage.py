@@ -2,7 +2,7 @@ import requests
 import json
 import datetime
 import os
-
+import kakao_utils
 print(os.getcwd())
 
 #토큰 관리하기
@@ -29,7 +29,7 @@ def update_tokens(app_key, filename):
     data = {
         "grant_type" : "refresh_token",
         "client_id" : app_key,
-        "refresh_token" : "NqAcRfV0Gz1HHrqZ_eIc9_VX0uipZdc2BaMtfQorDNMAAAF65YLufg"
+        "refresh_token" : "NqAcRfV0Gz1HHrqZ_eIc9_VX0uipZdc2BaMtfQorDNMAAAF65YLufg" # tokns['리프레쉬토큰']
     }
     response = requests.post(url, data=data)
 
@@ -54,13 +54,13 @@ def update_tokens(app_key, filename):
 # tokens = update_tokens(KAKAO_APP_KEY, KAKAO_TOKEN_FILENAME)
 # save_tokens(KAKAO_TOKEN_FILENAME, tokens)
 
-tokens = load_tokens(KAKAO_TOKEN_FILENAME)
+tokens = kakao_utils.load_tokens(KAKAO_TOKEN_FILENAME)
 
 url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
 
 #request parameter 설정
 headers = {
-    "Authorization" : "Bearer " +tokens['access_token']
+    "Authorization" : "Bearer " + tokens['access_token']
 }
 # data = {
 #     "template_object" : json.dumps({"object_type":"text" , "text" : "hello,world","link":{"web_url":"www.naver.com"}
@@ -79,7 +79,7 @@ template = {
             "image_url" : "https://search1.kakaocdn.net/argon/0x200_85_hr/8x5qcdbcQwi",
             "image_width":50, "image_height":50,
             "link": {
-                "web_url": "www.naver.com" , "mobile_web_url":"www.naver.com"
+                "web_url": "www.google.com" , "mobile_web_url":"www.naver.com"
             }
         },
         {
@@ -96,12 +96,14 @@ template = {
         {
             "title" : "웹으로 이동",
             "link" : {
-                "web_url": "www.naver.com", "mobile_web_url": "www.naver.com"
+                "web_url": "www.google.com", "mobile_web_url": "www.naver.com"
             }
         }
     ]
 
 }
+
+
 data = {
     "template_object" : json.dumps(template)
 }

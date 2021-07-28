@@ -37,16 +37,16 @@ else:
 
 
 
-
-
-
 #
 # # 파일 쓰기
 # data = "hello"
-# with open("testt.txt","w") as fp:
+# # with open("testt.txt","w") as fp:
 #     fp.write(data)
-#
-# with open("testt.txt", "r") as fp:
-#     print("==========")
+# #
+# with open("testtafasf.txt", "r") as fp:
+#     print("===asfasdfjhjasd=======")
 #     print(fp.read())
-#
+
+# with open("testtafasf.txt", "r") as fp:
+#     print("===asfasdfjhjasd=======")
+#     print(fp.read())
