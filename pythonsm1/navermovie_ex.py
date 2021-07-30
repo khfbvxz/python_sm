@@ -12,7 +12,6 @@ and they lived at the bottom of a well.</p>
 <p class="story">...</p>
 """
 soup = BeautifulSoup(html,'lxml')  # 책 lmxl인데 파서랑 왜 다른지?
-# print("soup.find()의 결과 : ", soup.find('a',attrs={'class' : 'sister'}))
 '''
 #객체.태그 이름
 #.태그 이름으로 하위 태그로의 접근이 가능하다.
@@ -74,15 +73,16 @@ print("soup.find()의 결과 : ", soup.find('a',attrs={'class' : 'sister'}))
 
 #soup.find()의 결과 :  <a class="sister" href="https://example.com/elsie" id="link1">Elise</a>
 '''
-# print("soup.find()의 결과 : ", soup.find('a',attrs={'class' : 'sister'}))
+
 '''
 # find_all() : 해당 태그가 여러 개 있을경우
 find_all(name, attrs, recursive, string, limit, **kwargs)
 [옵션]Limit 몇개까지 찾을 것인가? find_all() 로 검색했을 떄, 수천 수만개가 된다면 시간이 오래걸릴 것이다. 
 이떄까지 몇개 까지만 찾을 수 있도록 제한을 둘수 있는 인자다.
 
-
-print("soup.find_all()의 결과 : ", soup.find_all('a', limit=2))
-#soup.find_all()의 결과 :  [<a class="sister" href="https://example.com/elsie" id="link1">Elise</a>, <a class="sister" href="https://example.com/lacie" id="link2">lacie</a>]
 '''
+# print("soup.find_all()의 결과 : ", soup.find_all('a', limit=2))
+# soup.find_all()의 결과 :  [<a class="sister" href="https://example.com/elsie" id="link1">Elise</a>, <a class="sister" href="https://example.com/lacie" id="link2">lacie</a>]
+
+
 
