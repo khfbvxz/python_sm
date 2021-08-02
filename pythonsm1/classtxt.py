@@ -91,7 +91,7 @@ print("비엠속도는 ",myCar2.speed)
 # 정보 은닉
 # 파이썬에서 인스턴스 변수를 private으로 정의하려면 변수 이름 앞에 __ 을 붙이면 된다.
 # private이 붙은 인스턴스 변수는 클래스 내부에서만 접근 될 수 있다.
-# 인스턴스 변수값을 반화하는 접근자 getters
+# 인스턴스 변수값을 반환하는 접근자 getters
 # 인스턴스 변수값을 설정하는 설정자 setters
 class Student:
     def __init__(self,name=None, age=0):
@@ -106,29 +106,39 @@ class Student:
 
     def setAge(self,age):
         self.__age=age
+        # return self.__age
     def setName(self,name):
         self.__name = name
-# obj = Student()
+obj = Student()
 # print(obj.__age)
-#AttributeError: 'Student' object has no attribute '__age'
-#
-# obj1 = Student("Hong",20)
-# print(obj1.getName())
-# print(obj1.getAge())
+# AttributeError: 'Student' object has no attribute '__age'
+
+obj1 = Student("Hong",20)
+print(obj1.getName())
+print(obj1.getAge())
 
 class BankAcount:
-    def __init__(self):
+    def __init__(self,name='',bank=''):
         self.__balance = 0
-
+        self.__name = name
+        self.bank = bank
     def withdraw(self, amount):
         self.__balance += amount
         print("통장에", amount, "가 입금되었습니다.")
         return self.__balance
+    def getName(self):
+        return  self.__name
+
     def deposit(self, amount):
         self.__balance -= amount
         print("통장에", amount,"가 출금되었습니다")
         return self.__balance
-# a = BankAcount()
+# a = BankAcount('유 계좌','신한')   # 객체생성
+# b = BankAcount('유환이계좌')   # 객체생성
+# b.name
+# print(a.name, a.bank)
+# print(a._BankAcount__name) #
+# print(a.getName())
 # a.deposit(100)
 # a.withdraw(10)
 # # 통장에 100 가 출금되었습니다
@@ -186,11 +196,11 @@ def setSilentMode(t):
     t.volume = 2
 
 # setSilentMode()
-myTV = Television(11,10,True)
-myTV.show()
-setSilentMode(myTV)
-myTV.show()
-'''
+# myTV = Television(11,10,True)
+# myTV.show()
+# setSilentMode(myTV)
+# myTV.show()
+
 # 상수 정의
 class Monster:
     # 상수 값 정의
@@ -202,38 +212,42 @@ class Monster:
         self.health = Monster.NORMAL
 
     def eat(self):
-        self.__health = Monster.STRONG
-
+        self._health = Monster.STRONG
+    def eat2(self):
+        self.health = Monster.STRONG
     def attack(self):
-        self.__health = Monster.WEAK
-'''
-class Dog:
-    kind = "Bulldog"   # 클래스 변수
-    def __init__(self,name,age):   #생성자 메서드
-        self.name = name      # 각 인스턴스에 유일한 인스턴스 변수
-        self.age = age        # 각 인스턴스에 유일한 인스턴스 변수
-        self.pum = Dog.kind
-    def show(self):
+        self._health = Monster.WEAK
 
-        print(self.name,"의 품종",self.pum)
-
-na = Dog('미미',8)
-na.show()
-
-class Dice():
-    def __init__(self,x,y):
-        self._x = x
-        self._y = y
-        self._size = 30
-        self._value = 1
-
-    def read_dice(self):
-        return self._value
-    def print_dice(self):
-        print("주사위의 값=",self._value)
-    def roll_dice(self):
-        self._value = random.randint(1,6)
-
-d = Dice(100,100)
-d.roll_dice()
-d.print_dice() 
+rr = Monster()
+print(rr.eat())
+print(rr.eat2())
+# class Dog:
+#     kind = "Bulldog"   # 클래스 변수
+#     def __init__(self,name,age):   #생성자 메서드
+#         self.name = name      # 각 인스턴스에 유일한 인스턴스 변수
+#         self.age = age        # 각 인스턴스에 유일한 인스턴스 변수
+#         self.pum = Dog.kind
+#     def show(self):
+#
+#         print(self.name,"의 품종",self.pum)
+#
+# na = Dog('미미',8)
+# na.show()
+#
+# class Dice():
+#     def __init__(self,x,y):
+#         self._x = x
+#         self._y = y
+#         self._size = 30
+#         self._value = 1
+#
+#     def read_dice(self):
+#         return self._value
+#     def print_dice(self):
+#         print("주사위의 값=",self._value)
+#     def roll_dice(self):
+#         self._value = random.randint(1,6)
+#
+# d = Dice(100,100)
+# d.roll_dice()
+# d.print_dice()
